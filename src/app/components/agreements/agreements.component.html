@@ -1,0 +1,313 @@
+<div class="my-breadcrumb pt-4">
+  <nav style="
+      --bs-breadcrumb-divider: url(
+        &#34;data:image/svg + xml,
+        %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+      );
+    " aria-label="breadcrumb">
+    <ol class="breadcrumb ps-0">
+      <li class="breadcrumb-item fs-5 fw-bolder">
+        <a style="color: rgb(113, 111, 118)" href="#">Home</a>
+      </li>
+      <li class="breadcrumb-item fw-bold fs-5" style="color: black" aria-current="page">
+        Agreements
+      </li>
+    </ol>
+  </nav>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row content-control ">
+      <div class="col-12 col-md-12 col-xs-12 ">
+        <div class="title">
+          <h3 style="color: rgb(9, 116, 162)" class="pb-3 fw-bolder">Agreements</h3>
+          <p class="fs-5" style="color: rgb(73, 82, 93)">
+            View, modify, and edit agreement details to prepare for claim submission
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-xs-12 ">
+        <div class="createdButton py-4 d-flex align-items-end flex-column">
+          <!-- Button Agreement Created modal -->
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Created">
+            <span class="pe-2"> &#43;</span> New Agreement
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-xs-12">
+        <div class="display-table">
+          <table class="table table-striped">
+            <thead>
+              <tr class="title-table">
+                <th scope="col" width="10%">Status <a class="btn" (click)="sorting('status')">&#8593;&darr;</a> </th>
+                <th scope="col" width="10%">Quote Number <a class="btn"
+                    (click)="sorting('quoteNumber')">&#8593;&darr;</a></th>
+                <th scope="col" width="11%">Agreement Name <a class="btn"
+                    (click)="sorting('agreementName')">&#8593;&darr;</a></th>
+                <th scope="col" width="12%">Agreement Type <a class="btn"
+                    (click)="sorting('agreementType')">&#8593;&darr;</a></th>
+                <th scope="col" width="12%">Distributor Name <a class="btn"
+                    (click)="sorting('distributorName')">&#8593;&darr;</a></th>
+                <th scope="col" width="10%">Effective Date <a class="btn"
+                    (click)="sorting('effectiveDate')">&#8593;&darr;</a></th>
+                <th scope="col" width="10%">Expiration Date <a class="btn"
+                    (click)="sorting('expirationDate')">&#8593;&darr;</a></th>
+                <th scope="col" width="10%">Created Date <a class="btn"
+                    (click)="sorting('createdDate')">&#8593;&darr;</a></th>
+                <th scope="col" width="5%">Days Until Expiration</th>
+                <th scope="col" width="10%" class="text-center">Action</th>
+              </tr>
+              <tr>
+                <th scope="col"> <input [(ngModel)]="statusMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="text"> </th>
+                <th scope="col"> <input [(ngModel)]="quoteNumberMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="text"> </th>
+                <th scope="col"> <input [(ngModel)]="agreementNameMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 250px;'" type="text"> </th>
+                <th scope="col"> <input [(ngModel)]="agreementTypeMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="text"> </th>
+                <th scope="col"> <input [(ngModel)]="distributorNameMemory" (change)="changInputToFilter()"
+                    class="form-control " [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="text"> </th>
+                <th scope="col"> <input [(ngModel)]="effectiveDateMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="date"> </th>
+                <th scope="col"> <input [(ngModel)]="expirationDateMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="date"> </th>
+                <th scope="col"> <input [(ngModel)]="createdDateMemory" (change)="changInputToFilter()" class="form-control "
+                    [style]="'width: 100%; min-width: 80px; max-width: 150px;'" type="date"> </th>
+                <th scope="col"> </th>
+                <th scope="col"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let item of rowData | paginate: {itemsPerPage: pageSize, currentPage: pageIndex, totalItems: totalRecord}">
+                <td *ngIf="item.status === 'Invalid'" style="color: 'red';" scope="row">{{item.status}} <svg
+                    stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M22 24H2v-4h20v4zM13.06 5.19l3.75 3.75L7.75 18H4v-3.75l9.06-9.06zm4.82 2.68l-3.75-3.75 1.83-1.83a.996.996 0 011.41 0l2.34 2.34c.39.39.39 1.02 0 1.41l-1.83 1.83z">
+                    </path>
+                  </svg></td>
+                <td *ngIf="item.status === 'Published'" style="color: 'green';" scope="row">{{item.status}} <svg
+                    stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M433.1 657.7a31.8 31.8 0 0 0 51.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z">
+                    </path>
+                    <path
+                      d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z">
+                    </path>
+                  </svg></td>
+                <td *ngIf="item.status === 'Pending'" style="color: 'gray';" scope="row">{{item.status}} <svg
+                    stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <desc></desc>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <line x1="8" y1="12" x2="8" y2="12.01"></line>
+                    <line x1="12" y1="12" x2="12" y2="12.01"></line>
+                    <line x1="16" y1="12" x2="16" y2="12.01"></line>
+                  </svg></td>
+
+                <td>{{item.quoteNumber}}</td>
+                <td>{{item.agreementName}}</td>
+                <td>{{item.agreementType}}</td>
+                <td>{{item.distributorName}}</td>
+                <td>{{item.effectiveDate|date:"MM/dd/yyyy"}}</td>
+                <td>{{item.expirationDate|date:"MM/dd/yyyy"}}</td>
+                <td>{{item.createdDate|date:"MM/dd/yyyy"}}</td>
+                <td class="text-center">{{caculateDaysUntilExpiration(item.expirationDate)}}</td>
+                <td class="text-center"><button (click)="getAgreementbyId(item.id)" class="btn btn-warning"
+                    data-bs-toggle="modal" data-bs-target="#Edit">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em"
+                      width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <path fill="none" stroke="#000" stroke-width="2"
+                        d="M14,4 L20,10 L14,4 Z M22.2942268,5.29422684 C22.6840146,5.68401459 22.6812861,6.3187139 22.2864907,6.71350932 L9,20 L2,22 L4,15 L17.2864907,1.71350932 C17.680551,1.319449 18.3127724,1.31277239 18.7057732,1.70577316 L22.2942268,5.29422684 Z M3,19 L5,21 M7,17 L15,9">
+                      </path>
+                    </svg>
+                  </button>
+                  <button (click)="getAgreementName(item.id)" class="btn btn-danger ms-1" data-bs-toggle="modal"
+                    data-bs-target="#Del">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em"
+                      width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <path fill="none" d="M0 0h24v24H0V0z"></path>
+                      <path
+                        d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z">
+                      </path>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paginator d-flex justify-content-end">
+          <p class="me-5 py-1"> <span class="fw-bold">Total items:</span> {{totalRecord}}</p>
+          <div class="paginator-control">
+            <a class="btn btn-primary" (click)="pageIndexChanged(1)">First page</a>
+            <pagination-controls class="pe-4" (pageChange)="pageIndexChanged($event)"></pagination-controls>
+            <a class="btn btn-primary" (click)="pageIndexChanged(lastPage)">Last page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agreement Create-->
+<div class="modal fade" id="Created" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="exampleModalLabel">
+          Create a new Agreement
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="formCreate">
+          <form [formGroup]="createForm" (ngSubmit)="createdAgreement()">
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelectStatus">Status</label>
+              <select class="form-select" formControlName="status" id="inputGroupSelectStatus">
+                <option value="Invalid">Invalid</option>
+                <option value="Published">Published</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="quoteNumber" class="form-label">Quote Number</label>
+              <input type="text" formControlName="quoteNumber" class="form-control" id="quoteNumber" />
+            </div>
+            <div class="mb-3">
+              <label for="agreementName" class="form-label">Agreement Name</label>
+              <input type="text" formControlName="agreementName" class="form-control" id="agreementName" />
+            </div>
+            <div class="mb-3">
+              <label for="agreementType" class="form-label">Agreement Type</label>
+              <input type="text" formControlName="agreementType" class="form-control" id="agreementType" />
+            </div>
+            <div class="mb-3">
+              <label for="distributorName" class="form-label">Distributor Name</label>
+              <input type="text" formControlName="distributorName" class="form-control" id="distributorName" />
+            </div>
+            <div class="mb-3">
+              <label for="effectiveDate" class="form-label">Effective Date</label>
+              <input type="date" formControlName="effectiveDate" class="form-control" id="effectiveDate" />
+            </div>
+            <div class="mb-3">
+              <label for="expirationDate" class="form-label">Expiration Date</label>
+              <input type="date" formControlName="expirationDate" class="form-control" id="expirationDate" />
+            </div>
+            <div class="modal-footer">
+              <button data-bs-dismiss="modal" class="btn btn-primary" type="submit" [disabled]="!createForm.valid">
+                Create
+              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agreement Edit-->
+<div class="modal fade" id="Edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="exampleModalLabel">
+          Update Agreement
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="formCreate">
+          <form [formGroup]="editForm" (ngSubmit)="updateAgreement()">
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelectStatus">Status</label>
+              <select class="form-select" formControlName="status" id="inputGroupSelectStatus">
+                <option value="Invalid">Invalid</option>
+                <option value="Published">Published</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="quoteNumber" class="form-label">Quote Number</label>
+              <input type="text" formControlName="quoteNumber" class="form-control" id="quoteNumber" />
+            </div>
+            <div class="mb-3">
+              <label for="agreementName" class="form-label">Agreement Name</label>
+              <input type="text" formControlName="agreementName" class="form-control" id="agreementName" />
+            </div>
+            <div class="mb-3">
+              <label for="agreementType" class="form-label">Agreement Type</label>
+              <input type="text" formControlName="agreementType" class="form-control" id="agreementType" />
+            </div>
+            <div class="mb-3">
+              <label for="distributorName" class="form-label">Distributor Name</label>
+              <input type="text" formControlName="distributorName" class="form-control" id="distributorName" />
+            </div>
+            <div class="mb-3">
+              <label for="effectiveDate" class="form-label">Effective Date</label>
+              <input type="date" formControlName="effectiveDate" class="form-control" id="effectiveDate" />
+            </div>
+            <div class="mb-3">
+              <label for="expirationDate" class="form-label">Expiration Date</label>
+              <input type="date" formControlName="expirationDate" class="form-control" id="expirationDate" />
+            </div>
+            <div class="mb-3">
+              <label for="createdDate" class="form-label">Created Date</label>
+              <input type="date" formControlName="createdDate" class="form-control" id="createdDate" />
+            </div>
+            <div class="modal-footer">
+              <button data-bs-dismiss="modal" class="btn btn-primary" type="submit" [disabled]="!editForm.valid">
+                Update
+              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal Agreement Delete-->
+<div class="modal fade" id="Del" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fw-bold" id="staticBackdropLabel">
+          Delete Agreement
+        </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>
+          Do you want delete
+          <span class="fw-bold">{{ agreementNameByDel }} </span>?
+        </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteAgreement()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+
+.content{
+  position: relative;
+  padding: 0px 0px;
+  padding-bottom: 25px ;
+  height:72rem;
+}
+
+.my-breadcrumb{
+  padding: 0px 25px;
+}
+
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: rgb(141, 141, 141);
+  content: "\276F\00a0";
+}
+
+.paginator{
+  margin-top: 2rem;
+}
+.paginator-control{
+  display: flex;
+}
+.paginator-control>a{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+table > thead > tr{
+  background-color: rgb(230, 228, 228);
+  color: rgb(16, 118, 163);
+}
+.title-table>th{
+  padding-left: 15px;
+}
+
+.content-control >.paginator-control{
+  position: absolute;
+  bottom: 0;
+}
+.display-table{
+  min-height: min-content;
+  height: 890px;
+}
+

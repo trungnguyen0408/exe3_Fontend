@@ -1,0 +1,58 @@
+.content-home{
+  padding: 25px 12px 75px;
+  background-color: rgb(245, 245, 245);
+}
+.content{
+  background-color: white;
+  padding: 30px 10px;
+  color: rgb(109, 71, 81);
+}
+.size-icon-card{
+  width: 150px;
+  height: 150px;
+  color: rgb(54, 190, 193);
+}
+.title-card{
+  color: rgb(0, 59, 105);
+}
+.btn-style{
+  background-color: rgb(25, 120, 163);
+  color: white;
+  font-weight: bold;
+  width: 150px;
+}
+.item{
+  display: flex;
+  background-color: rgb(245, 245, 245);
+  margin: 15px 0px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.item >.icon-card{
+flex: 1;
+}
+.item >.content-card{
+  flex: 3;
+}
+.item >.button-card{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.workflow{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 245, 245);
+  margin: 15px;
+  flex-wrap: wrap;
+}
+.workflow > .head-workflow{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+.workflow > .body-workflow{
+  text-align: center;
+  padding: 20px 20px 90px;
+}

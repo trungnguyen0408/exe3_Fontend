@@ -1,0 +1,10 @@
+export interface AgreementEditDto {
+  status:string;
+  quoteNumber:string;
+  agreementName:string;
+  agreementType:string;
+  distributorName:string;
+  effectiveDate:Date;
+  expirationDate:Date;
+  createdDate:Date;
+}

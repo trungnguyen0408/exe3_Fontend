@@ -1,0 +1,18 @@
+export enum Sort {
+   AscendingStatus,
+        DescendingStatus,
+        AscendingQuoteNumber,
+        DescendingQuoteNumber,
+        AscendingAgreementName,
+        DescendingAgreementName,
+        AscendingAgreementType,
+        DescendingAgreementType,
+        AscendingDistributorName,
+        DescendingDistributorName,
+        AscendingEffectiveDate,
+        DescendingEffectiveDate,
+        AscendingExpirationDate,
+        DescendingExpirationDate,
+        AscendingCreateDate,
+        DescendingCreateDate,
+}
